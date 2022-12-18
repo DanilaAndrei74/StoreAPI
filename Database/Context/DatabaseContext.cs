@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StoreAPI.Database_Entities;
+using StoreAPI.Database_Context.EntitiesConfiguration;
+using StoreAPI.Database.Entities;
 
 namespace StoreAPI.Database_Context
 {
@@ -14,6 +15,11 @@ namespace StoreAPI.Database_Context
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfiguration(new UserConfig());
         }
         public DbSet<User> Users { get; set; }
     }

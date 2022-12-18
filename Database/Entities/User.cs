@@ -1,4 +1,4 @@
-﻿namespace StoreAPI.Database_Entities
+﻿namespace StoreAPI.Database.Entities
 {
     public class User
     {

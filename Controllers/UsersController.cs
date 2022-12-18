@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Database_Context;
-using StoreAPI.Database_Entities;
+using StoreAPI.Database.Entities;
+using StoreAPI.Database.Validators;
+using FluentValidation.Results;
 
 namespace StoreAPI.Controllers
 {
@@ -10,9 +12,11 @@ namespace StoreAPI.Controllers
     public class UsersController : ControllerBase
     {
         private readonly DatabaseContext _context;
-        public UsersController(DatabaseContext context)
+        private UserValidator _validator;
+        public UsersController(DatabaseContext context, UserValidator validator)
         {
             _context = context;
+            _validator = validator;
         }
 
 
@@ -36,8 +40,19 @@ namespace StoreAPI.Controllers
 
         // POST api/<ValuesController>
         [HttpPost]
-        public async Task<ActionResult> PostUser([FromBody] User user)
+        public ActionResult<string> PostUser([FromBody] User user)
         {
+            ValidationResult result = _validator.Validate(user);
+            if (!result.IsValid) return ValidationProblem("user not valid");
+
+            var toAdd = new User
+            {
+                Id = user.Id,
+                Name = user.Name
+            };
+
+            _context.Users.Add(toAdd);
+            _context.SaveChanges();
 
             return Created("User created", null);
         }
