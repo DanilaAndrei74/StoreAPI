@@ -1,6 +1,6 @@
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
-using StoreAPI.Database_Context;
+using StoreAPI.Database.Context;
 using StoreAPI.Database.Entities;
 using StoreAPI.Database.Validators;
 

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using StoreAPI.Database_Context.EntitiesConfiguration;
+using StoreAPI.Database.EntitiesConfiguration;
 using StoreAPI.Database.Entities;
 
-namespace StoreAPI.Database_Context
+namespace StoreAPI.Database.Context
 {
     public class DatabaseContext: DbContext
     {
@@ -20,7 +20,14 @@ namespace StoreAPI.Database_Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new UserConfig());
+            modelBuilder.ApplyConfiguration(new ProductConfig());
+            modelBuilder.ApplyConfiguration(new StoreConfig());
+            modelBuilder.ApplyConfiguration(new ProductInStoreConfig());
+
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Store> Stores { get; set; }
+
     }
 }

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using StoreAPI.Database_Context;
+using StoreAPI.Database;
 using StoreAPI.Database.Entities;
 using StoreAPI.Database.Validators;
 using FluentValidation.Results;
+using StoreAPI.Database.Context;
 
 namespace StoreAPI.Controllers
 {
@@ -48,7 +49,8 @@ namespace StoreAPI.Controllers
             var toAdd = new User
             {
                 Id = user.Id,
-                Name = user.Name
+                FirstName = user.FirstName,
+                LastName = user.LastName
             };
 
             _context.Users.Add(toAdd);

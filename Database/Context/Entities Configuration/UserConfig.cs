@@ -1,9 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using StoreAPI.Database.Entities;
-using System.Data.Entity.ModelConfiguration;
 
-namespace StoreAPI.Database_Context.EntitiesConfiguration
+namespace StoreAPI.Database.EntitiesConfiguration
 {
     public class UserConfig: IEntityTypeConfiguration<User>
     {
@@ -15,9 +14,12 @@ namespace StoreAPI.Database_Context.EntitiesConfiguration
             builder.Property(x => x.Id)
                         .IsRequired()
                         .ValueGeneratedOnAdd();
-            builder.Property(x => x.Name)
+            builder.Property(x => x.FirstName)
                         .IsRequired()
-                        .HasMaxLength(256);
+                        .HasMaxLength(20);
+            builder.Property(x => x.LastName)
+                        .IsRequired()
+                        .HasMaxLength(20);
             builder.Property(x => x.IsDeleted)
                         .ValueGeneratedOnAdd()
                         .HasDefaultValue(false)
