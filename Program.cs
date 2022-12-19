@@ -1,9 +1,7 @@
-using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using StoreAPI.Database.Context;
-using StoreAPI.Database.Entities;
 using StoreAPI.Database.Validators;
 using StoreAPI.Services.Authentication;
 using System.Text;
@@ -21,8 +19,10 @@ namespace StoreAPI
 
             
             //Add validators
-            builder.Services.AddScoped<UserValidator>();
+            builder.Services.AddScoped<UserInputValidator>();
             builder.Services.AddScoped<LoginValidator>();
+            builder.Services.AddScoped<ProductInputValidator>();
+            builder.Services.AddScoped<StoreInputValidator>();
 
             //Add other services
             builder.Services.AddScoped<AuthenticationService>();

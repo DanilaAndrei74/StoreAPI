@@ -1,13 +1,12 @@
 ﻿using FluentValidation;
-using StoreAPI.Database.Entities;
+using StoreAPI.Contracts.Data;
 
 namespace StoreAPI.Database.Validators
 {
-    public class UserValidator : AbstractValidator<User> 
+    public class UserInputValidator : AbstractValidator<UserInput> 
     {
-        public UserValidator()
+        public UserInputValidator()
         {
-            RuleFor(x => x.Id).NotNull();
             RuleFor(x => x.Email).EmailAddress()
                                 .NotEmpty();
             RuleFor(x => x.FirstName).NotNull()

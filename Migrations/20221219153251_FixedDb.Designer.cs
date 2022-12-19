@@ -12,8 +12,8 @@ using StoreAPI.Database.Context;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221218192403_FixedProductsAndStores")]
-    partial class FixedProductsAndStores
+    [Migration("20221219153251_FixedDb")]
+    partial class FixedDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,9 +134,9 @@ namespace StoreAPI.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<string>("Password")
+                    b.Property<byte[]>("Password")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Salt")
                         .IsRequired()

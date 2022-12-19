@@ -26,20 +26,16 @@ namespace StoreAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> DoLogin([FromBody] LoginCredentials credentials)
         {
-            //Aplica validator 
             ValidationResult result = _validator.Validate(credentials);
             if (!result.IsValid) return ValidationProblem("Invalid credentials");
 
-            //Cauta user in context daca exista
             var user = _context.Users.FirstOrDefault(x => x.Email == credentials.Email && x.IsDeleted == false);
             if (user == null) return NotFound();
 
-            //Ia saltul de la user si da hash la parola
-            string hashedPassword = _authentication.HashPassword(credentials.Password, user.Salt);
-            if (user.Password != hashedPassword) Unauthorized();
+            byte[] hashedPassword = _authentication.HashPassword(credentials.Password, user.Salt);
+            if (!_authentication.ValidatePassword(hashedPassword, user.Password)) return Unauthorized("Wrong credentials");
 
-            //Return ok si creeaza token
-            return Ok();
+            return Ok("Nice");
         }
     }
 }
