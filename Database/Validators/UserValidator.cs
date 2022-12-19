@@ -20,13 +20,5 @@ namespace StoreAPI.Database.Validators
                                 .MinimumLength(6)
                                 .MaximumLength(20);
         }
-
-        //public Guid Id { get; set; }
-        //public string Email { get; set; }
-        //public string FirstName { get; set; }
-        //public string LastName { get; set; }
-        //public string Password { get; set; }
-        //public string Salt { get; set; }
-        //public bool IsDeleted { get; set; }
     }
 }
