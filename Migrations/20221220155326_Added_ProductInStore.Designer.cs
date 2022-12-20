@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreAPI.Database.Context;
 
@@ -11,9 +12,11 @@ using StoreAPI.Database.Context;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221220155326_Added_ProductInStore")]
+    partial class AddedProductInStore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,7 +71,7 @@ namespace StoreAPI.Migrations
 
                     b.HasIndex("StoreId");
 
-                    b.ToTable("ProductsInStores");
+                    b.ToTable("ProductInStores");
                 });
 
             modelBuilder.Entity("StoreAPI.Database.Entities.Store", b =>

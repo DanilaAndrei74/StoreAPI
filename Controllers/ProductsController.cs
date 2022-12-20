@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation.Results;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StoreAPI.Contracts.Data;
 using StoreAPI.Database.Context;
+using StoreAPI.Database.Entities;
 using StoreAPI.Database.Validators;
 using StoreAPI.Services.Authentication;
 
@@ -13,9 +15,9 @@ namespace StoreAPI.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly DatabaseContext _context;
-        private UserInputValidator _validator;
+        private ProductInputValidator _validator;
         private AuthenticationService _authentication;
-        public ProductsController(DatabaseContext context, UserInputValidator validator, AuthenticationService authentication)
+        public ProductsController(DatabaseContext context, ProductInputValidator validator, AuthenticationService authentication)
         {
             _context = context;
             _validator = validator;
@@ -44,7 +46,7 @@ namespace StoreAPI.Controllers
         [HttpGet("{productId}")]
         public async Task<ActionResult<ProductOutput>> GetProductById(Guid productId)
         {
-            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId);
+            var product = await _context.Products.FirstOrDefaultAsync(x => x.Id == productId && x.IsDeleted == false);
             if (product == null) return NotFound();
 
             var output = new ProductOutput
@@ -57,72 +59,62 @@ namespace StoreAPI.Controllers
             return Ok(output);
         }
 
-        //[HttpPost]
-        //public ActionResult<string> PostUser([FromBody] UserInput user)
-        //{
-        //    ValidationResult result = _validator.Validate(user);
-        //    if (!result.IsValid) return ValidationProblem("user not valid");
+        [HttpPost]
+        public ActionResult<string> PostProduct([FromBody] ProductInput product)
+        {
+            ValidationResult result = _validator.Validate(product);
+            if (!result.IsValid) return ValidationProblem();
 
-        //    var existsInDb = _context.Users.FirstOrDefault(x => x.Email == user.Email);
-        //    if (existsInDb != null) return BadRequest("Email already in use");
+            var existsInDb = _context.Products.FirstOrDefault(x => x.Name == product.Name);
+            if (existsInDb != null) return BadRequest("Product already exists");
 
-        //    var saltToAdd = _authentication.CreateSalt();
-        //    var passwordToAdd = _authentication.HashPassword(user.Password, saltToAdd);
+            var toAdd = new Product
+            {
+                Name = product.Name,
+                Description = product.Description
+            };
 
-        //    var toAdd = new User
-        //    {
-        //        Email = user.Email,
-        //        FirstName = user.FirstName,
-        //        LastName = user.LastName,
-        //        Salt = saltToAdd,
-        //        Password = passwordToAdd
-        //    };
+            _context.Products.Add(toAdd);
+            _context.SaveChanges();
 
-        //    _context.Users.Add(toAdd);
-        //    _context.SaveChanges();
+            return Created("Product created at {toAdd.Id}", toAdd.Id);
+        }
 
-        //    return Created("User created at {toAdd.Id}", toAdd.Id);
-        //}
+        [HttpPut("{productId}")]
+        public ActionResult<ProductOutput> PutProduct(Guid productId, [FromBody] ProductInput product)
+        {
+            ValidationResult result = _validator.Validate(product);
+            if (!result.IsValid) return ValidationProblem();
 
-        //[HttpPut("{userId}")]
-        //public ActionResult<UserOutput> PutUser(Guid userId, [FromBody] UserInput user)
-        //{
-        //    ValidationResult result = _validator.Validate(user);
-        //    if (!result.IsValid) return ValidationProblem("user not valid");
+            var productFromDb = _context.Products.FirstOrDefault(x => x.Id == productId);
+            if (productFromDb == null) return NotFound();
 
-        //    var userFromDb = _context.Users.FirstOrDefault(x => x.Id == userId);
-        //    if (userFromDb == null) return NotFound();
+            productFromDb.Name= product.Name;
+            productFromDb.Description= product.Description;
+            productFromDb.IsDeleted = false;
 
-        //    userFromDb.Email = user.Email;
-        //    userFromDb.FirstName = user.FirstName;
-        //    userFromDb.LastName = user.LastName;
-        //    userFromDb.Password = _authentication.HashPassword(user.Password, userFromDb.Salt);
-        //    userFromDb.IsDeleted = false;
+            _context.SaveChanges();
 
-        //    _context.SaveChanges();
+            var toDisplay = new ProductOutput()
+            {
+                Id = productId,
+                Name = product.Name,
+                Description = product.Description
+            };
 
-        //    var toDisplay = new UserOutput()
-        //    {
-        //        Id = userId,
-        //        Email = user.Email,
-        //        LastName = user.LastName,
-        //        FirstName = user.FirstName,
-        //    };
+            return Created("", null);
+        }
 
+        [HttpDelete("{productId}")]
+        public ActionResult<Guid> DeleteProduct(Guid productId)
+        {
+            var product = _context.Products.FirstOrDefault(x => x.Id == productId && x.IsDeleted == false);
+            if (product == null) return NotFound();
 
-        //    return Created("", null);
-        //}
+            product.IsDeleted = true;
+            _context.SaveChanges();
 
-        //[HttpDelete("{userId}")]
-        //public ActionResult<Guid> DeleteUser(Guid userId)
-        //{
-        //    var user = _context.Users.FirstOrDefault(x => x.Id == userId && x.IsDeleted == false);
-        //    if (user == null) return NotFound();
-
-        //    user.IsDeleted = true;
-        //    _context.SaveChanges();
-
-        //    return Accepted(userId.ToString());
-        //}
+            return Accepted(productId.ToString());
+        }
     }
 }

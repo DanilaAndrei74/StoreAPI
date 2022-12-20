@@ -28,6 +28,6 @@ namespace StoreAPI.Database.Context
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Store> Stores { get; set; }
-
+        public DbSet<ProductInStore> ProductsInStores { get; set; }
     }
 }

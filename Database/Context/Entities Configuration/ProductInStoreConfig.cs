@@ -4,9 +4,9 @@ using StoreAPI.Database.Entities;
 
 namespace StoreAPI.Database.EntitiesConfiguration
 {
-    public class ProductInStoreConfig : IEntityTypeConfiguration<ProductsInStores>
+    public class ProductInStoreConfig : IEntityTypeConfiguration<ProductInStore>
     {
-        public void Configure(EntityTypeBuilder<ProductsInStores> builder)
+        public void Configure(EntityTypeBuilder<ProductInStore> builder)
         {
             builder.HasKey(x => new { x.ProductId, x.StoreId });
             builder.Property(x => x.ProductId).IsRequired();

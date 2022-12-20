@@ -12,8 +12,8 @@ using StoreAPI.Database.Context;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20221219153251_FixedDb")]
-    partial class FixedDb
+    [Migration("20221220142330_NewDb")]
+    partial class NewDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,23 +67,18 @@ namespace StoreAPI.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("StoreId1")
-                        .HasColumnType("int");
-
                     b.HasKey("ProductId", "StoreId");
 
-                    b.HasIndex("StoreId1");
+                    b.HasIndex("StoreId");
 
                     b.ToTable("ProductsInStores");
                 });
 
             modelBuilder.Entity("StoreAPI.Database.Entities.Store", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -157,7 +152,7 @@ namespace StoreAPI.Migrations
 
                     b.HasOne("StoreAPI.Database.Entities.Store", "Store")
                         .WithMany("ProductsInStores")
-                        .HasForeignKey("StoreId1")
+                        .HasForeignKey("StoreId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

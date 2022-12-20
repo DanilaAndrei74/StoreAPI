@@ -23,7 +23,7 @@ namespace StoreAPI.Controllers
             _authentication = authentication;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<ActionResult<string>> DoLogin([FromBody] LoginCredentials credentials)
         {
             ValidationResult result = _validator.Validate(credentials);

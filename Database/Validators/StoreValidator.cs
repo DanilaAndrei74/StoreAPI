@@ -1,9 +1,10 @@
 ﻿using FluentValidation;
+using StoreAPI.Contracts.Data.InputModels;
 using StoreAPI.Database.Entities;
 
 namespace StoreAPI.Database.Validators
 {
-    public class StoreInputValidator : AbstractValidator<Store>
+    public class StoreInputValidator : AbstractValidator<StoreInput>
     {
         public StoreInputValidator()
         {

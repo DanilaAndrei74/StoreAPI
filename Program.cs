@@ -23,7 +23,8 @@ namespace StoreAPI
             builder.Services.AddScoped<LoginValidator>();
             builder.Services.AddScoped<ProductInputValidator>();
             builder.Services.AddScoped<StoreInputValidator>();
-
+            builder.Services.AddScoped<ProductsInStoresInputValidator>();
+            
             //Add other services
             builder.Services.AddScoped<AuthenticationService>();
 

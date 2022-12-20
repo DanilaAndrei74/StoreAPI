@@ -7,6 +7,6 @@
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
         
-        public IEnumerable<ProductsInStores> ProductsInStores { get; set; }
+        public IEnumerable<ProductInStore> ProductsInStores { get; set; }
     }
 }

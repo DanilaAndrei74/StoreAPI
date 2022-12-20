@@ -46,7 +46,7 @@ namespace StoreAPI.Controllers
         [HttpGet("{userId}")]
         public async Task<ActionResult<UserOutput>> GetUserById(Guid userId)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId );
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId && x.IsDeleted == false);
             if (user == null) return NotFound();
             
             var output = new UserOutput
@@ -66,7 +66,7 @@ namespace StoreAPI.Controllers
             ValidationResult result = _validator.Validate(user);
             if (!result.IsValid) return ValidationProblem("user not valid");
 
-            var existsInDb = _context.Users.FirstOrDefault(x => x.Email == user.Email);
+            var existsInDb = _context.Users.FirstOrDefault(x => x.IsDeleted == false && x.Email == user.Email);
             if (existsInDb != null) return BadRequest("Email already in use");
 
             var saltToAdd = _authentication.CreateSalt();
