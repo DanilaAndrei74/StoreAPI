@@ -2,10 +2,10 @@
 TO DO:
 []Creat serviciu de securitate (JWT)
 []Adaugat authorize in endpointuri
-[]Testat endpoint-uri ProductsInStores
-[]Facut postman pt ProductsInStores
 
 DONE:
+[x]Testat endpoint-uri ProductsInStores
+[x]Facut postman pt ProductsInStores
 [x]CRUD, validator, I/O model pt ProductsInStores
 [x]Facut template de Postman pt endpoint-uri
 [x]Input/Output model pt Product

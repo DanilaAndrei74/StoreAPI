@@ -69,7 +69,7 @@ namespace StoreAPI.Controllers
         public ActionResult<List<ProductInStoreOutput>> GetByStoreId(Guid storeId)
         {
             IEnumerable<ProductInStore> productsInStores = _context.ProductsInStores
-                .Where(x => x.ProductId == storeId && x.IsDeleted == false);
+                .Where(x => x.StoreId == storeId && x.IsDeleted == false);
             var output = new List<ProductInStoreOutput>();
             if (productsInStores == null) return Ok(output);
 
