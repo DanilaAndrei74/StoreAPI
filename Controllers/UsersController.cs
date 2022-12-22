@@ -6,11 +6,13 @@ using FluentValidation.Results;
 using StoreAPI.Database.Context;
 using StoreAPI.Contracts.Data;
 using StoreAPI.Services.Authentication;
+using Microsoft.AspNetCore.Authorization;
 
 namespace StoreAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly DatabaseContext _context;

@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using StoreAPI.Database.Context;
 using StoreAPI.Database.Validators;
 using StoreAPI.Services.Authentication;
+using StoreAPI.Services.JWT;
 using System.Text;
 
 namespace StoreAPI
@@ -27,7 +28,7 @@ namespace StoreAPI
             
             //Add other services
             builder.Services.AddScoped<AuthenticationService>();
-
+            builder.Services.AddScoped<JwtService>();
 
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
@@ -57,6 +58,7 @@ namespace StoreAPI
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

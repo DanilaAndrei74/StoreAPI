@@ -1,9 +1,9 @@
 # StoreAPI
 TO DO:
-[]Creat serviciu de securitate (JWT)
-[]Adaugat authorize in endpointuri
 
 DONE:
+[x]Adaugat authorize in endpointuri
+[x]Creat serviciu de securitate (JWT)
 [x]Testat endpoint-uri ProductsInStores
 [x]Facut postman pt ProductsInStores
 [x]CRUD, validator, I/O model pt ProductsInStores

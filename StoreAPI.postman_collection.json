@@ -241,7 +241,19 @@
 					"name": "Stores/{storeId}",
 					"request": {
 						"method": "GET",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Stores/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
 					},
 					"response": []
 				},
@@ -405,6 +417,188 @@
 							"port": "7113",
 							"path": [
 								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductsInStores",
+			"item": [
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"2b41b916-12ff-4708-16ab-08dae37c0ea7\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\",\r\n  \"quantity\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"453d315b-81ac-4989-ab59-08dae29931f6\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\",\r\n  \"quantity\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"storeId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithProductId/{productId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithProductId/453d315b-81ac-4989-ab59-08dae29931f6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithProductId",
+								"453d315b-81ac-4989-ab59-08dae29931f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithStoreId/{storeId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithStoreId/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithStoreId",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithKeys",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"453d315b-81ac-4989-ab59-08dae29931f6\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithKeys",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithKeys"
 							]
 						}
 					},
