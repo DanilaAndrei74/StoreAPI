@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoreAPI.Database.Context;
 
@@ -11,9 +12,11 @@ using StoreAPI.Database.Context;
 namespace StoreAPI.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20221220142330_NewDb")]
+    partial class NewDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,7 +51,7 @@ namespace StoreAPI.Migrations
                     b.ToTable("Products");
                 });
 
-            modelBuilder.Entity("StoreAPI.Database.Entities.ProductInStore", b =>
+            modelBuilder.Entity("StoreAPI.Database.Entities.ProductsInStores", b =>
                 {
                     b.Property<Guid>("ProductId")
                         .HasColumnType("uniqueidentifier");
@@ -139,7 +142,7 @@ namespace StoreAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("StoreAPI.Database.Entities.ProductInStore", b =>
+            modelBuilder.Entity("StoreAPI.Database.Entities.ProductsInStores", b =>
                 {
                     b.HasOne("StoreAPI.Database.Entities.Product", "Product")
                         .WithMany("ProductsInStores")

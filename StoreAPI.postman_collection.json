@@ -1,0 +1,610 @@
+{
+	"info": {
+		"_postman_id": "cb900469-f25e-4801-810e-b0cccff16342",
+		"name": "StoreAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24943912"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([201, 202]);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"DorelMitrea@gmail.com\",\r\n  \"firstName\": \"Dorel\",\r\n  \"lastName\": \"Mitrea\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Users",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users/{userId}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"DorelMitrea1@gmail.com\",\r\n  \"firstName\": \"Dorel\",\r\n  \"lastName\": \"Mitrea\",\r\n  \"password\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Users/7865b8cd-123b-41f9-b0fe-08dae29745b8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Users",
+								"7865b8cd-123b-41f9-b0fe-08dae29745b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Users/{userId}",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://localhost:7113/Users/7865b8cd-123b-41f9-b0fe-08dae29745b8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Users",
+								"7865b8cd-123b-41f9-b0fe-08dae29745b8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User/{userId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Users/7865b8cd-123b-41f9-b0fe-08dae29745b8",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Users",
+								"7865b8cd-123b-41f9-b0fe-08dae29745b8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stores",
+			"item": [
+				{
+					"name": "Stores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Stores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Emag\",\r\n  \"address\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Stores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stores/{storeId}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Da\",\r\n  \"address\": \"string\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Stores/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stores/{storeId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Stores/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Stores/{storeId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Stores/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Stores",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"banana\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Products",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products/{productId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Products/147f0818-be9a-47b8-ab5a-08dae29931f6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Products",
+								"147f0818-be9a-47b8-ab5a-08dae29931f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products/{productId}",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"mar\",\r\n  \"description\": \"string\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/Products/147f0818-be9a-47b8-ab5a-08dae29931f6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Products",
+								"147f0818-be9a-47b8-ab5a-08dae29931f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products/{productId}",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Products/147f0818-be9a-47b8-ab5a-08dae29931f6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Products",
+								"147f0818-be9a-47b8-ab5a-08dae29931f6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Do login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/Login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"Login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProductsInStores",
+			"item": [
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"2b41b916-12ff-4708-16ab-08dae37c0ea7\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\",\r\n  \"quantity\": \"3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"453d315b-81ac-4989-ab59-08dae29931f6\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\",\r\n  \"quantity\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"storeId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithProductId/{productId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithProductId/453d315b-81ac-4989-ab59-08dae29931f6",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithProductId",
+								"453d315b-81ac-4989-ab59-08dae29931f6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithStoreId/{storeId}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithStoreId/d701490e-bc66-4ced-6d01-08dae299d08e",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithStoreId",
+								"d701490e-bc66-4ced-6d01-08dae299d08e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ProductsInStores/QueryWithKeys",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"productId\": \"453d315b-81ac-4989-ab59-08dae29931f6\",\r\n  \"storeId\": \"d701490e-bc66-4ced-6d01-08dae299d08e\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7113/ProductsInStores/QueryWithKeys",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7113",
+							"path": [
+								"ProductsInStores",
+								"QueryWithKeys"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
