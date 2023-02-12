@@ -1,5 +1,7 @@
 # StoreAPI
 TO DO:
+[]Creat seed pt baza de date
+[]Modificat modele pt Product/Store sa aiba imagini
 
 DONE:
 [x]Adaugat authorize in endpointuri
